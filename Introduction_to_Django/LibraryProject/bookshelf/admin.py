@@ -1,10 +1,11 @@
-from django.contrib import admin
-from .models import Book
+from django.db import models
 
-
-@admin.register(Book)
-class BookAdmin(admin.ModelAdmin):
-    list_display = ("title", "author", "publication_year")
-    list_filter = ("author", "publication_year")
-    search_fields = ("title", "author")
-
+# Create your models here.
+class Book(models.Model):
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=100)
+    publication_year = models.IntegerField()
+    
+    def __str__(self):
+        return self.title
+        
